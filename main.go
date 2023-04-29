@@ -2,16 +2,11 @@ package main
 
 import (
 	"fmt"
-	"log"
 
-	"github.com/matt-riley/dots-cli/cmd"
+	"github.com/matt-riley/dots-cli/cmd/dots"
 )
 
 func main() {
-	message, err := cmd.Hello()
-	if err != nil {
-		log.Fatal(err)
-	}
-
+	message := dots.Hello()
 	fmt.Println(message)
 }
