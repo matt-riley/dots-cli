@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/matt-riley/go-template/cmd"
+	"github.com/matt-riley/dots-cli/cmd"
 )
 
 func main() {
