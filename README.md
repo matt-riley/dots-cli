@@ -1,13 +1,24 @@
-# MATTD
+# mattd
 
 A dots file manager
 
+## Installation
+
+### Homebrew
+
+```bash
+brew tap matt-riley/tools
+brew install mattd
+```
+
 ## Examples
 
-### Help
+<details>
+    <summary>Help</summary>
+    <img src="./gifs/help.gif" width="100%" loading="lazy"/>
+</details>
 
-![HELP Example](./gifs/help.gif)
-
-### Version
-
-![Version Example](./gifs/version.gif)
+<details>
+    <summary>Version</summary>
+    <img src="./gifs/version.gif" width="100%" loading="lazy"/>
+</details>
