@@ -19,8 +19,9 @@ jobs:
       - run: git fetch --force --tags
       - uses: actions/setup-go@v4
         with:
-          go-version: stable
+          go-version: 1.19
       - uses: goreleaser/goreleaser-action@v4
+        id: releaser
         with:
           distribution: goreleaser
           version: latest
@@ -28,3 +29,79 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
+      - run: |
+          echo "binary=$(jq -r '.[] | select(.name == "mattd" and .goos == "linux" and .goarch == "amd64" and .goamd64 == "v1") | .path' ./dist/artifacts.json)" >> $GITHUB_OUTPUT
+        id: binary
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mattd
+          path: ${{ steps.binary.outputs.binary }}
+          retention-days: 1
+
+  help:
+    runs-on: ubuntu-latest
+    needs: goreleaser
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: mattd
+          path: bin/
+      - run: |
+          chmod 0755 bin/mattd
+          ls -la bin
+          echo "./bin" >> $GITHUB_PATH
+      - uses: charmbracelet/vhs-action@v1
+        with:
+          path: "tapes/help.tape"
+          install-fonts: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: help
+          path: gifs/help.gif
+          retention-days: 1
+  version:
+    runs-on: ubuntu-latest
+    needs: goreleaser
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: mattd
+          path: bin/
+      - run: |
+          chmod 0755 bin/mattd
+          ls -la bin
+          echo "./bin" >> $GITHUB_PATH
+      - uses: charmbracelet/vhs-action@v1
+        with:
+          path: "tapes/version.tape"
+          install-fonts: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: version
+          path: gifs/version.gif
+          retention-days: 1
+  push:
+    runs-on: ubuntu-latest
+    needs: [help, version]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: help
+          path: gifs/
+      - uses: actions/download-artifact@v3
+        with:
+          name: version
+          path: gifs/
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commit_message: Updated generated VHS GIFs
+          branch: main
+          commit_user_name: vhs-action 📼
+          commit_user_email: actions@github.com
+          commit_author: vhs-action 📼 <actions@github.com>
+          file_pattern: "*.gif"
