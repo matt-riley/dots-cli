@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Semver release
-        uses: oknozor/cocogitto-action@v2
+        uses: oknozor/cocogitto-action@v3
         with:
           release: true
           git-user: "Matt Riley"
