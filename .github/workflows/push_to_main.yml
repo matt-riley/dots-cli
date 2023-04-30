@@ -1,0 +1,22 @@
+---
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: write
+name: Bump version
+jobs:
+  bump-version:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Semver release
+        uses: oknozor/cocogitto-action@v2
+        with:
+          release: true
+          git-user: "Matt Riley"
+          git-user-email: "matt@mattriley.me"

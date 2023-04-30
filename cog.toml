@@ -1,0 +1,13 @@
+tag_prefix = "v"
+post_bump_hooks = [
+  "git push --follow-tags origin main",
+]
+[changelog]
+path = "CHANGELOG.md"
+template = "remote"
+remote = "github.com"
+repository = "dots-cli"
+owner = "matt-riley"
+authors = [
+  {username = "matt-riley", signature = "Matt Riley"}
+]

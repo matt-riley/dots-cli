@@ -28,10 +28,22 @@ brews:
     homepage: https://github.com/matt-riley/dots-cli
     description: "A simple tool to grab my dots and setup a new machine"
     dependencies:
+      - name: atuin
+      - name: bat
+      - name: curl
+      - name: gh
       - name: git
-      - name: zsh
+      - name: jq
+      - name: lsd
+      - name: navi
+      - name: ripgrep
+      - name: rtx
       - name: stow
       - name: tmux
+      - name: wakatime-cli
+      - name: zoxide
+      - name: zplug
+      - name: zsh
 archives:
   - format: tar.gz
     name_template: >-
