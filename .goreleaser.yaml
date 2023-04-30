@@ -23,8 +23,6 @@ brews:
       email: matt@mattriley.me
     homepage: https://github.com/matt-riley/dots-cli
     description: "A simple tool to grab my dots and setup a new machine"
-    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
-    custom_require: "lib/private"
     dependencies:
       - name: atuin
       - name: bat
