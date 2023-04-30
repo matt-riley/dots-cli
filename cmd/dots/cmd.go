@@ -14,8 +14,16 @@ var rootCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return nil
 	},
+	PreRunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) == 0 {
+			cmd.Help()
+		}
+		return nil
+	},
 }
 
+// Execute executes the root command.
 func Execute() error {
+	rootCmd.AddCommand(initialize())
 	return rootCmd.ExecuteContext(context.Background())
 }

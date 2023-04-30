@@ -80,11 +80,37 @@ jobs:
           name: version
           path: gifs/version.gif
           retention-days: 1
-  push:
+
+  completion:
     runs-on: ubuntu-latest
-    needs: [help, version]
+    needs: goreleaser
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: mattd
+          path: bin/
+      - run: |
+          chmod 0755 bin/mattd
+          echo "./bin" >> $GITHUB_PATH
+      - uses: charmbracelet/vhs-action@v1
+        with:
+          path: "tapes/completion.tape"
+          install-fonts: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: completion
+          path: gifs/completion.gif
+          retention-days: 1
+  push:
+    runs-on: ubuntu-latest
+    needs: [completion, help, version]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: completion
+          path: gifs/
       - uses: actions/download-artifact@v3
         with:
           name: help
