@@ -1,5 +1,4 @@
-
-Output gifs/help.gif
+Output gifs/completion.gif
 
 Set FontSize 12
 Set FontFamily "Fira Code"

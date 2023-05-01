@@ -81,6 +81,27 @@ jobs:
           path: gifs/version.gif
           retention-days: 1
 
+  init:
+    runs-on: ubuntu-latest
+    needs: goreleaser
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: mattd
+          path: bin/
+      - run: |
+          chmod 0755 bin/mattd
+          echo "./bin" >> $GITHUB_PATH
+      - uses: charmbracelet/vhs-action@v1
+        with:
+          path: "tapes/init.tape"
+          install-fonts: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: init
+          path: gifs/init.gif
+          retention-days: 1
   completion:
     runs-on: ubuntu-latest
     needs: goreleaser
@@ -104,7 +125,7 @@ jobs:
           retention-days: 1
   push:
     runs-on: ubuntu-latest
-    needs: [completion, help, version]
+    needs: [completion, help, version, init]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
@@ -114,6 +135,10 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: help
+          path: gifs/
+      - uses: actions/download-artifact@v3
+        with:
+          name: init
           path: gifs/
       - uses: actions/download-artifact@v3
         with:
