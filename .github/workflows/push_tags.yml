@@ -50,7 +50,7 @@ jobs:
       - run: |
           chmod 0755 bin/mattd
           echo "./bin" >> $GITHUB_PATH
-      - uses: charmbracelet/vhs-action@v1
+      - uses: charmbracelet/vhs-action@v2
         with:
           path: "tapes/help.tape"
           install-fonts: true
@@ -71,7 +71,7 @@ jobs:
       - run: |
           chmod 0755 bin/mattd
           echo "./bin" >> $GITHUB_PATH
-      - uses: charmbracelet/vhs-action@v1
+      - uses: charmbracelet/vhs-action@v2
         with:
           path: "tapes/version.tape"
           install-fonts: true
@@ -93,7 +93,7 @@ jobs:
       - run: |
           chmod 0755 bin/mattd
           echo "./bin" >> $GITHUB_PATH
-      - uses: charmbracelet/vhs-action@v1
+      - uses: charmbracelet/vhs-action@v2
         with:
           path: "tapes/init.tape"
           install-fonts: true
@@ -114,7 +114,7 @@ jobs:
       - run: |
           chmod 0755 bin/mattd
           echo "./bin" >> $GITHUB_PATH
-      - uses: charmbracelet/vhs-action@v1
+      - uses: charmbracelet/vhs-action@v2
         with:
           path: "tapes/completion.tape"
           install-fonts: true
