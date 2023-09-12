@@ -1,3 +1,4 @@
+// Package dots the main dots cmd package
 package dots
 
 import (

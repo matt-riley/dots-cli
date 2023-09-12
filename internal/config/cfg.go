@@ -1,4 +1,4 @@
-// Package cfg provides a configuration file for the application
+// Package config provides a configuration file for the application
 package config
 
 import (
@@ -10,6 +10,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// Config is the configuration file for the application
 type Config struct {
 	Repository string
 }
@@ -28,6 +29,7 @@ func FileExists() bool {
 	return true
 }
 
+// FromFile reads the config file and returns a Config struct
 func FromFile(path string) (*Config, error) {
 	cfgfile, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -43,6 +45,7 @@ func FromFile(path string) (*Config, error) {
 	return cfg, nil
 }
 
+// ToFile writes the Config struct to the config file
 func ToFile(filepath string, cfg *Config) error {
 	bytes, err := yaml.Marshal(cfg)
 

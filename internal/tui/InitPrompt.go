@@ -1,3 +1,4 @@
+// Package tui contains the terminal user interface for dots
 package tui
 
 import (

@@ -1,3 +1,4 @@
+// Description: Entrypoint for the dots-cli application
 package main
 
 import (

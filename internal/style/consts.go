@@ -3,6 +3,7 @@ package style
 
 import "github.com/charmbracelet/lipgloss"
 
+// Color palette constants
 const (
 	Rosewater = lipgloss.Color("#f5e0dc")
 	Flamingo  = lipgloss.Color("#f2cdcd")
