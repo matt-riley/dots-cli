@@ -32,7 +32,7 @@ jobs:
       - run: |
           echo "binary=$(jq -r '.[] | select(.name == "mattd" and .goos == "linux" and .goarch == "amd64" and .goamd64 == "v1") | .path' ./dist/artifacts.json)" >> $GITHUB_OUTPUT
         id: binary
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: mattd
           path: ${{ steps.binary.outputs.binary }}
@@ -54,7 +54,7 @@ jobs:
         with:
           path: "tapes/help.tape"
           install-fonts: true
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: help
           path: gifs/help.gif
@@ -75,7 +75,7 @@ jobs:
         with:
           path: "tapes/version.tape"
           install-fonts: true
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: version
           path: gifs/version.gif
@@ -97,7 +97,7 @@ jobs:
         with:
           path: "tapes/init.tape"
           install-fonts: true
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: init
           path: gifs/init.gif
@@ -118,7 +118,7 @@ jobs:
         with:
           path: "tapes/completion.tape"
           install-fonts: true
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: completion
           path: gifs/completion.gif
