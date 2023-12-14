@@ -43,7 +43,7 @@ jobs:
     needs: goreleaser
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: mattd
           path: bin/
@@ -64,7 +64,7 @@ jobs:
     needs: goreleaser
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: mattd
           path: bin/
@@ -86,7 +86,7 @@ jobs:
     needs: goreleaser
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: mattd
           path: bin/
@@ -107,7 +107,7 @@ jobs:
     needs: goreleaser
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: mattd
           path: bin/
@@ -128,19 +128,19 @@ jobs:
     needs: [completion, help, version, init]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: completion
           path: gifs/
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: help
           path: gifs/
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: init
           path: gifs/
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: version
           path: gifs/
